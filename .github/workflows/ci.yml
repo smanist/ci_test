@@ -21,19 +21,23 @@ jobs:
 
     steps:
     # Checks-out the repository under $GITHUB_WORKSPACE
-    - name: Check-out main repo
+    - name: Checkout main repo
       uses: actions/checkout@v2
+      with:
+        path: main
 
-    - name: Check-out support repo
-      uses: actions/checkout@master
+    - name: Checkout support repo
+      uses: actions/checkout@v2
       with:
         repository: smanist/ci_test_data
+        path: ci_test_data
 
     - name: Test workspace
       run: |
         echo $GITHUB_WORKSPACE
         ls /home/runner/work/
         ls /home/runner/work/ci_test
+        ls $GITHUB_WORKSPACE
 
     # Part 1 - Not implemented
     # We need a way to check the coding style and documentation
