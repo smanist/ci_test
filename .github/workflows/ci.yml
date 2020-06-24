@@ -33,23 +33,22 @@ jobs:
         echo $GITHUB_WORKSPACE
         pip3 install numpy
         python3 run.py
-        if [[ $(cmp --silent res.dat ./test/ref.dat) = 1 ]]; then
+        echo $(cmp --silent res.dat ./test/ref.dat || fail)
+        if [[ $(cmp --silent res.dat ./test/ref.dat || fail) = fail ]]; then
           echo "files are the same"
         else
           echo "files are different:"
           cat res.dat
         fi
-        echo $(cmp --silent res.dat ./test/ref.dat || "fail")
-        echo here
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: exit 0
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: exit 1
+    # # Runs a single command using the runners shell
+    # - name: Run a one-line script
+    #   run: exit 1
 
     - name: The job has succeeded
       if: ${{ success() }}
-      run: ehoc Success!
+      run: echo Success!
