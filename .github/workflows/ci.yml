@@ -26,6 +26,8 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: smanist/ci_test_data
+
+    - name: Test workspace
       run: |
         ls $GITHUB_WORKSPACE
 
