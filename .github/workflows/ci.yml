@@ -24,7 +24,7 @@ jobs:
     - name: Checkout main repo
       uses: actions/checkout@v2
       with:
-        path: main
+        path: ci_test
 
     - name: Checkout support repo
       uses: actions/checkout@v2
@@ -35,9 +35,13 @@ jobs:
     - name: Test workspace
       run: |
         echo $GITHUB_WORKSPACE
-        ls /home/runner/work/
-        ls /home/runner/work/ci_test
         ls $GITHUB_WORKSPACE
+        echo '1'
+        ls /home/runner/work/ci_test
+        echo '2'
+        ls /home/runner/work/ci_test/ci_test
+        echo '3'
+        ls /home/runner/work/ci_test/ci_test_data
 
     # Part 1 - Not implemented
     # We need a way to check the coding style and documentation
