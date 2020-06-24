@@ -32,8 +32,10 @@ jobs:
         if [[ $(cmp --silent res.dat ./test/ref.dat) = 1 ]]; then
           echo "files are the same"
         else
-          echo "files are different"
+          echo "files are different:"
+          cat res.dat
         fi
+        cmp res.dat ./test/ref.dat
 
     # # Runs a single command using the runners shell
     # - name: Run a one-line script
@@ -41,6 +43,8 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: |
-        which cmake
-        cmake --version
+      run: return 0
+
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: return 1
