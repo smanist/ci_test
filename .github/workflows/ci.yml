@@ -60,7 +60,7 @@ jobs:
     # Part 4
     - name: Regression test
       run: |
-        echo $GITHUB_WORKSPACE
+        cd $GITHUB_WORKSPACE/ci_test
         python3 run.py
         cmp --silent res.dat $GITHUB_WORKSPACE/ci_test_data/data.dat || exit 1
         echo DONE
