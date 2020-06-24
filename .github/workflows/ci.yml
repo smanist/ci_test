@@ -33,7 +33,7 @@ jobs:
         echo $GITHUB_WORKSPACE
         pip3 install numpy
         python3 run.py
-        cmp --silent res.dat ./test/ref.dat || cat res.dat && exit 1
+        cmp --silent res.dat ./test/ref.dat || (cat res.dat && exit 1)
         # if [[ $(cmp --silent res.dat ./test/ref.dat || fail) = fail ]]; then
         #   echo "files are the same"
         # else
