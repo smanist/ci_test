@@ -33,17 +33,12 @@ jobs:
         echo $GITHUB_WORKSPACE
         pip3 install numpy
         python3 run.py
-        cmp --silent res.dat ./test/ref.dat || echo "files are different"
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: sudo apt-get install -y fftw3
-
-    # Runs a single command using the runners shell
-    - name: if test
-      run: |
-        if [ "foo" = "foo" ]; then
-          echo Yes
+        if (( $(cmp --silent res.dat ./test/ref.dat) == 1 )); then
+          echo "files are different"
         else
-          echo No
+          echo "files are the same"
         fi
+
+    # # Runs a single command using the runners shell
+    # - name: Run a one-line script
+    #   run: sudo apt-get install -y fftw3
