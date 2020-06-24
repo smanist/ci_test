@@ -21,8 +21,10 @@ jobs:
 
     steps:
     # Checks-out the repository under $GITHUB_WORKSPACE
-    - name: Check-out
+    - name: Check-out main repo
       uses: actions/checkout@v2
+
+    - name: Check-out support repo
       uses: actions/checkout@master
       with:
         repository: smanist/ci_test_data
