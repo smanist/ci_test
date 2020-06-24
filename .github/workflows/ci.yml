@@ -35,13 +35,9 @@ jobs:
     - name: Test workspace
       run: |
         echo $GITHUB_WORKSPACE
-        ls $GITHUB_WORKSPACE
+        ls $GITHUB_WORKSPACE/ci_test
         echo '1'
-        ls /home/runner/work/ci_test
-        echo '2'
-        ls /home/runner/work/ci_test/ci_test
-        echo '3'
-        ls /home/runner/work/ci_test/ci_test_data
+        ls $GITHUB_WORKSPACE/ci_test_data
 
     # Part 1 - Not implemented
     # We need a way to check the coding style and documentation
@@ -66,7 +62,7 @@ jobs:
       run: |
         echo $GITHUB_WORKSPACE
         python3 run.py
-        cmp --silent res.dat ./test/ref.dat || exit 1
+        cmp --silent res.dat $GITHUB_WORKSPACE/ci_test_data/data.dat || exit 1
         echo DONE
 
     # Saves the results file
