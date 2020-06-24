@@ -31,7 +31,9 @@ jobs:
 
     - name: Test workspace
       run: |
-        ls $GITHUB_WORKSPACE
+        echo $GITHUB_WORKSPACE
+        ls /home/runner/work/
+        ls /home/runner/work/ci_test
 
     # Part 1 - Not implemented
     # We need a way to check the coding style and documentation
