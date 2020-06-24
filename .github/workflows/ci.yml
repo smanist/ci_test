@@ -21,7 +21,13 @@ jobs:
 
     steps:
     # Checks-out the repository under $GITHUB_WORKSPACE
-    - uses: actions/checkout@v2
+    - name: Check-out
+      uses: actions/checkout@v2
+      uses: actions/checkout@master
+      with:
+        repository: smanist/ci_test_data
+      run: |
+        ls $GITHUB_WORKSPACE
 
     # Part 1 - Not implemented
     # We need a way to check the coding style and documentation
