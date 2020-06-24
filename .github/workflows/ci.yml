@@ -27,10 +27,9 @@ jobs:
     - name: Run a multi-line script
       run: |
         echo $GITHUB_WORKSPACE
-        ls
-        gcc --version
-        which python3
-        which gfortran
+        python3 run.py
+        cmp res.dat ./test/ref.dat
+        ls /usr/bin
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
