@@ -33,13 +33,13 @@ jobs:
         echo $GITHUB_WORKSPACE
         pip3 install numpy
         python3 run.py
-        echo $(cmp --silent res.dat ./test/ref.dat || fail)
-        if [[ $(cmp --silent res.dat ./test/ref.dat || fail) = fail ]]; then
-          echo "files are the same"
-        else
-          echo "files are different:"
-          cat res.dat
-        fi
+        cmp --silent res.dat ./test/ref.dat || cat res.dat && exit 1
+        # if [[ $(cmp --silent res.dat ./test/ref.dat || fail) = fail ]]; then
+        #   echo "files are the same"
+        # else
+        #   echo "files are different:"
+        #   cat res.dat
+        # fi
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
