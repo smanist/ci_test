@@ -30,11 +30,17 @@ jobs:
         pip3 install numpy
         python3 run.py
         if [[ $(cmp --silent res.dat ./test/ref.dat) = 1 ]]; then
-          echo "files are different"
-        else
           echo "files are the same"
+        else
+          echo "files are different"
         fi
 
     # # Runs a single command using the runners shell
     # - name: Run a one-line script
     #   run: sudo apt-get install -y fftw3
+
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: |
+        which cmake
+        cmake --version
