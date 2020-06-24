@@ -33,7 +33,7 @@ jobs:
       run: |
         echo $GITHUB_WORKSPACE
         python3 run.py
-        cmp --silent res.dat ./test/ref.dat || (cat res.dat && exit 1)
+        cmp --silent res.dat ./test/ref.dat || exit 1
         echo DONE
 
     - name: Upload test result
