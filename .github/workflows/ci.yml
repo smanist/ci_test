@@ -35,7 +35,9 @@ jobs:
           echo "files are different:"
           cat res.dat
         fi
-        echo $(cmp --silent res.dat ./test/ref.dat)
+        cmp --silent res.dat ./test/ref.dat
+        status=$1
+        echo $1
 
     # # Runs a single command using the runners shell
     # - name: Run a one-line script
