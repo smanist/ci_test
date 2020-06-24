@@ -39,8 +39,8 @@ jobs:
           echo "files are different:"
           cat res.dat
         fi
-        cmp --silent res.dat ./test/ref.dat
-        trap "cat res.dat" exit
+        echo $(cmp --silent res.dat ./test/ref.dat || 'fail')
+        echo here
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
